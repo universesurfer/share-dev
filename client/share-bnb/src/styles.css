@@ -1,1 +1,280 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*NAVBAR*/
+
+.navbar {
+  background-color: white;
+  margin-bottom: 0px !important;
+  margin-left: 2%;
+  margin-right: 2%;
+  border: none;
+}
+
+.navbar-header .navbar-brand{
+  color: red;
+}
+
+/*HOMEPAGE GRAPHIC STYLING*/
+
+#home-background {
+  background-image: url('http://www.playuna.com/11/2014/10/home-decor-408-greenwich-04-01-loft-interior-design.jpg');
+  background-size: 100% 100%;
+  height: 630px;
+}
+
+#home-background img {
+  max-width:100%;
+  max-height:100%;
+
+}
+
+/*SEARCH LISTINGS STYLING*/
+
+#rental-description {
+  clear: both;
+  font-size: 1.2em;
+}
+
+.SearchForm {              /*Styles and positions the search box*/
+  background-color: white;
+  margin-top: 39%;
+}
+
+.form-group input {
+  outline: hidden;
+  border: none;
+  font-size: 1.2em;
+}
+
+.SearchForm {
+  outline: hidden;
+  border: none;
+  font-size: 1.2em;
+}
+
+/*.SearchForm .row {
+  height: 30px !important;
+}*/
+
+.SearchForm form {
+  display: table;
+  width: 100%;
+  border: 1px grey solid;
+  border-radius: 5px;
+
+}
+
+/*.container SearchForm row {
+  margin-top: 80%;
+}*/
+
+
+.SearchForm__submit button {
+  background-color: red;
+  height: 40px;
+  position: relative;
+  /*margin-top: 30%;*/
+}
+
+            /*Location Input*/
+.SearchForm__location {
+  width: 35%;
+  height: auto;
+  display: inline-block;
+  padding-left: 10px;
+}
+
+            /*Dates Input*/
+.SearchForm__dates {
+  width: 35%;
+  height: auto;
+  /*padding: 10px;*/
+  display: inline-block;
+}
+
+/*SEARCH BUTTON*/
+
+
+.SearchForm__inputs-wrapper .SearchForm__dates, .SearchForm__inputs-wrapper .SearchForm__guests {
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-left-color: #dce0e0;
+}
+
+.SearchForm__inputs-wrapper .SearchForm__guests, .SearchForm__inputs-wrapper .SearchForm__location, .SearchForm__inputs-wrapper .SearchForm__dates, .SearchForm__inputs-wrapper .SearchForm__submit {
+    /*padding: 15px 16px 8px;*/
+    display: table-cell;
+    float: none;
+}
+
+.GuestPickerTrigger .GuestPickerTrigger__button {
+    background: #fff;
+    position: relative;
+    text-align: left;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    padding: 6px 8px;
+    font-size: 1em;
+    line-height: normal;
+    display: block;
+    width: 100%;
+    border: 1px solid #aaa;
+    color: #484848;
+}
+
+.GuestPickerTrigger {
+  position: relative;
+}
+
+.guest-input {
+  display: inline;
+}
+
+.guest-input-width {
+  width: 250px;
+}
+
+.DateRangePicker {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.DateRangePickerInput {
+  width: auto;
+  display: block;
+}
+
+.DateRangePickerInput:focus {
+  outline: none;
+}
+
+.DateInput__input{
+  border: none;
+}
+
+.DateInput input {
+  width: 60%;
+  border: none;
+  margin-top: 2%;
+}
+.DateInput__input:focus{
+  outline: none;
+}
+
+.SearchForm__label {
+  display: block;
+  padding-top: 9px;
+  padding-bottom: 8px;
+}
+
+.SearchForm__inputs-wrapper {
+  /*position: relative;*/
+  display: table;
+  table-layout: auto;
+  float: none;
+  width: 100%;
+}
+
+
+.LocationInput {
+  width: 95%;
+  border: none;
+}
+
+.LocationInput:focus {
+  outline: none;
+}
+
+/*FONT STYLING*/
+
+.input-large {
+  font-size: 1.3em;
+}
+
+.text-left {
+  text-align: left;
+}
+
+
+
+/*SEARCH RESULTS*/
+
+/*.rental-cards-row {
+  overflow: auto;
+}*/
+
+.rental-cards-row {
+  overflow: auto;
+  height: 670px;
+}
+
+
+.filters-container {
+  height: 30px;
+  border-bottom: solid .5px lightgrey;
+  margin-bottom: 30px !important;
+}
+
+
+/*RENTAL CARD RESULTS*/
+
+.rental-results-images {
+  height: 200px;
+  width: 100%;
+}
+
+.rental-results-images img{
+  /*height: 400px;
+  width: 600px;*/
+  position: relative;
+  background-size: 100% 100%;
+}
+
+
+
+
+.rental-card-wrapper {
+  width: 42%;
+  height: 33%;
+  margin-top: 8%;
+  /*background-size: 100% 100%;*/
+}
+
+
+.col-md-6 {
+    width: 50%;
+    float: left;
+}
+
+.col-sm-12 {
+    width: 100%;
+    float: left;
+}
+
+/*MAP*/
+
+
+.map {
+  position: relative;
+  height: 600px;
+  top: 0;
+}
+
+.sebm-google-map-container {
+    width: 100%;
+    height: 100%;
+}
+
+/*.map-canvas {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+}*/

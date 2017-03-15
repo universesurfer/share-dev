@@ -34,7 +34,7 @@ export class AuthService implements CanActivate {
     return this.token != null ? true : false;
   }
 
-  signup(user) {
+  signup(user, callback) {
   	return this.http.post(`${this.BASE_URL}/signup`, user)
   		.map((response) => response.json())
   		.map((response) => {
@@ -52,10 +52,13 @@ export class AuthService implements CanActivate {
           return false;
         }
   		})
-  		.catch((err) => Observable.throw(err));
+      .catch((err) => {
+        callback(err._body);
+        return Observable.throw(err);
+      });
   }
 
-  login(user) {
+  login(user, callback) {
     return this.http.post(`${this.BASE_URL}/login`, user)
         .map((response: Response) => {
             // login successful if there's a jwt token in the response
@@ -72,6 +75,10 @@ export class AuthService implements CanActivate {
               // return false to indicate failed login
               return false;
             }
+        })
+        .catch((err) => {
+          callback(err._body);
+          return Observable.throw(err);
         });
   }
 

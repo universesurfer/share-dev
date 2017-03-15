@@ -1,5 +1,88 @@
-<div class="jumbotron">
-  <h1>Hello, world!</h1>
-  <p>Welcome to ShareBnB</p>
-  <!-- <p><a class="btn btn-primary btn-lg" [routerLink]="['/login']" role="button">Login</a></p> -->
+<div class="jumbotron" id="home-background">
+
+
+<!-- SEARCH FORM -->
+<div class="container search-box" >
+  <div class="SearchForm row" >
+  <form method="GET">
+    <!-- LOCATION INPUT -->
+    <div class="SearchForm__inputs-wrapper col-md-12">
+        <div class="SearchForm__location">
+          <label for="search-location" class="SearchForm__label"><span>Where</span></label>
+          <div class="form-group">
+            <input placeholder="Destination" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control" #search />
+          </div>
+        </div>
+        <!-- DATES INPUT -->
+        <div class="SearchForm__dates text-left">
+          <label for="start-date" class="SearchForm__label"><span>When</span></label>
+
+          <!-- Date Picker -->
+          <div class="DateRangePicker">
+            <div class="DateRangePickerInput">
+              <div class="DateInput">
+                <!-- <input type="text" aria-label="Check In" class="DateInput__input" id="start-date" name="daterange" value="" placeholder="Check In" autocomplete="off" /> -->
+                <input type="text" name="daterangeInput" daterangepicker [options]="options" (selected)="selectedDate($event)"/>
+                  <!-- <input type="text" aria-label="Check Out" class="DateInput__input" id="endDate" name="endDate" value="" placeholder="Check Out" autocomplete="off" aria-describedby=""> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- NUMBER OF GUESTS INPUT -->
+        <div class="SearchForm__guests text-left">
+          <div class="GuestPickerTrigger">
+            <label for="guests" class="SearchForm__label"><span>Guests</span></label>
+            <select class="form-control" #guestNumber (change)="guestAmountInput(guestNumber.value)">
+                <option *ngFor="let option of guestOptions" [value]="option">{{option}}</option>
+            </select>
+
+
+
+            <!-- <select #selectedOption name="" class="guest-selector" >
+
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+
+            </select> -->
+
+            <!-- [(ngModel)]="sleepsAmount"  -->
+
+          <!-- guests dropdown -->
+              <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Guests
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu guest-input-width">
+                <li>
+                  <label for="adults-quantity" class="SearchForm__label" ><span>Adults</span></label>
+                   <input type="number" name="quantity" min="1" max="10" class="guest-input" [(ngModel)]="adults" (click)="sendAdultValues()">
+                </li>
+                <li>
+                  <label for="children-quantity" class="SearchForm__label"><span>Children</span></label>
+                  <input type="number" name="quantity" min="0" max="5" class="guest-input" [(ngModel)]="children" (click)="sendChildrenValues()">
+                </li> -->
+
+<!-- </ul> -->
+          </div>
+        </div>
+
+        <div class="SearchForm__submit">
+          <button class="btn btn-primary btn-large btn-block" (click)="searchSomething()">Search</button>
+        </div>
+
+    </div>
+  </form>
+  </div>
+</div>
+
 </div>

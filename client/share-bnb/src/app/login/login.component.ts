@@ -27,16 +27,19 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.session.login(this.user)
-				        .subscribe(result => {
-				            if (result === true) {
-			                // login successful
-			                this.router.navigate(['/home']);
-			         			} else {
-			                // login failed
-			                this.error = 'Email or password is incorrect';
-				            }
-				        });
+    this.session.login(this.user, (error)=>{
+      console.log("from component");
+      console.log(error);
+    })
+		        .subscribe(result => {
+		            if (result === true) {
+	                // login successful
+	                this.router.navigate(['/home']);
+	         			} else {
+	                // login failed
+	                this.error = 'Email or password is incorrect';
+		            }
+		        });
   }
 
 }

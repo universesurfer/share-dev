@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-signup',
@@ -29,8 +31,17 @@ export class SignupComponent implements OnInit {
   ngOnInit() {
   }
 
+  // (mess)=>{
+  //   console.log("from component");
+  //   console.log(mess);
+  //
+
   signup() {
-  	this.session.signup(this.newUser)
+  	this.session.signup(this.newUser, (error)=>{
+        console.log("from component");
+        console.log(error);
+    })
+
       .subscribe(result => {
           if (result === true) {
               // login successful

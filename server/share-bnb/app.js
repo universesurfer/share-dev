@@ -9,11 +9,13 @@ const passport = require("passport");
 // const bcrypt = require("bcrypt");
 const cors         = require('cors');
 // const multer = require("multer");
+var requestify = require('requestify');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require("./routes/auth");
 
+//----------REQUIRE THE DATABASE-------------
 require('./config/database');
 var app = express();
 
