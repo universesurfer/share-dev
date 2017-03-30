@@ -1,3 +1,30 @@
-<p>
-  single-rental works!
-</p>
+<div class="filters-container">
+      <!-- Filters go here... -->
+</div>
+
+<div class="container-fluid">
+<div class="row">
+
+    <carousel>
+      <slide *ngFor="let pic of photos" class="rental-results-slide">
+        <img [src]="pic.large.uri"/>
+      </slide>
+
+    </carousel>
+
+
+<div class="rental-page-details">
+
+  <!-- setting the @Input details to equal the individual rental details from rentalDetails variable in component -->
+
+    <app-listing-details [details]="rentalDetails" [location]="rentalLocation" [adContent]="adContent" [unitContent]="unitContent" [features]="features" [prices]="prices"></app-listing-details>
+    <!-- <app-listing-details ></app-listing-details> -->
+
+
+</div>
+
+
+
+
+</div>
+</div>

@@ -1,70 +1,30 @@
 
-<div class="search-map">     <!-- Wraps everything but the nav//search -->
-
-    <div class="rentals-search-container">
-
-        <div class="filters-container">
-            Filters go here...
-        </div>
-
-      <!-- HOME RENTAL RESULTS -->
-
-
-  <!-- <div class="row"> -->
-
-  <!-- <div class="container-wrapper"> -->
-  <div class="container-fluid">
-    <div class="row">
-      <div class="rental-cards-row col-xs-7">
-        <div *ngFor="let rental of rentalListings" class="search-results">
-
-            <!-- <HouseComponent [title]="fas" img="dsa" -->
+<div class="search-map">
+  <div class="rentals-search-container">
+    <div class="filters-container">
+          Filters go here...
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="rental-cards-row col-xs-7">
+          <div *ngFor="let rental of rentalListings" class="search-results">
             <div class="rental-card-wrapper col-md-6">
-              <img [src]="rental.thumbnail.uri" class="rental-results-images listingContainer" align="right"/>
+               <!-- <app-single-rental [listingImage]="rental.thumbnail.uri"></app-single-rental>
+              <app-single-rental [listingHeadline]="rental.headline"></app-single-rental>
+              <app-single-rental [listingAccommodations]="rental.accommodations"></app-single-rental> -->
+              <app-card-listing [listing]="rental"></app-card-listing>
 
-              <!-- <div id="price-per-night"> {{ rental.pricesRanges[0].from }} </div> -->
-              <div id="rental-description"> {{rental.headline}} </div>
-              <div id="rental-accommodations"> {{rental.accommodations}} </div>
 
+              <!-- <app-rental-listings #listingId="rental.listingId"></app-rental-listings> -->
             </div>
-
+          </div>
         </div>
-      </div>
-
-      <!-- MAP -->
-      <!-- <div class="map-wrapper"> -->
         <div class="map col-xs-5">
           <sebm-google-map [latitude]="userSearchLat" [longitude]="userSearchLng" [zoom]="zoom">
             <sebm-google-map-marker *ngFor="let marker of rentalListings" [latitude]="marker.location.lat" [longitude]="marker.location.lng"></sebm-google-map-marker>
           </sebm-google-map>
         </div>
-      <!-- </div> -->
-
-
-
-
-  <!-- </div> -->
-
-
-
-          </div>
-
       </div>
-
-    <!-- </div> -->
-
+    </div>
   </div>
-
 </div>
-
-
-
-<!-- <h1> Phone list </h1>
-<div>
-  <div *ngFor="let phone of phones" class="item">
-    <img [src]="phone.image" />
-    <h3> {{ phone.name }} </h3>
-    <p> {{ phone.brand }} </p>
-    <a [routerLink]="['/phone', phone._id]"> View Details </a>
-  </div>
-</div> -->

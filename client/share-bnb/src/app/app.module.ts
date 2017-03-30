@@ -19,6 +19,11 @@ import { Ng2AutoCompleteModule } from 'ng2-auto-complete';
 import { AgmCoreModule } from "angular2-google-maps/core";
 import { RentalListingsComponent } from './rental-listings/rental-listings.component';
 import { SingleRentalComponent } from './rental-listings/single-rental/single-rental.component';
+import { CardListingComponent } from './card-listing/card-listing.component';
+
+import { CarouselModule } from 'ng2-bootstrap';
+import { ListingDetailsComponent } from './listing-details/listing-details.component'
+
 
 
 
@@ -29,7 +34,9 @@ import { SingleRentalComponent } from './rental-listings/single-rental/single-re
     LoginComponent,
     HomeComponent,
     RentalListingsComponent,
-    SingleRentalComponent
+    SingleRentalComponent,
+    CardListingComponent,
+    ListingDetailsComponent
   ],
   imports: [
     AgmCoreModule.forRoot({
@@ -40,6 +47,7 @@ import { SingleRentalComponent } from './rental-listings/single-rental/single-re
     HttpModule,
     Ng2AutoCompleteModule,
     Daterangepicker,
+    CarouselModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [AuthService, HomeAwayService],

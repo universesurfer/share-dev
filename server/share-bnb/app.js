@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 const passport = require("passport");
 // const bcrypt = require("bcrypt");
-const cors         = require('cors');
+const cors         = require('cors')();
 // const multer = require("multer");
 var requestify = require('requestify');
 
@@ -20,14 +20,14 @@ require('./config/database');
 var app = express();
 
 
-var corsOptions = {credentials: true, origin: 'http://localhost:4200'};
+// var corsOptions = {credentials: true, origin: 'http://localhost:4200'};
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
 
+app.use(cors);
+app.options('*', cors);
 
 //Passport
 app.use(passport.initialize());

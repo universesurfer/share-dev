@@ -1,0 +1,155 @@
+<p>
+  listing-details works!
+</p>
+
+<div class="container">
+  <div class="row">
+    <!-- <div class="col-xs-8"> -->
+
+  <!-- HEADLINE -->
+
+<div class="row">
+    <div class="short-description col-xs-8">
+
+      <div class="listing-headline">
+          {{ adContent?.headline }}
+      </div>
+
+      <div class="location-info">
+          {{ location?.city }}, {{ location?.state }}, {{ location?.country }}
+      </div>
+
+  <hr>
+    </div>
+
+</div>
+
+
+
+
+<!-- DETAILS OVERVIEW -->
+<div class="row">
+      <div class="details-overview col-xs-8">
+
+          <div class="rental-type">
+              Space type: {{ unitContent?.propertyType }}
+          </div>
+
+          <div class="guest-allowance">
+              {{ unitContent?.maxSleep }} guests
+          </div>
+
+          <!-- <div class="space-type">
+
+          </div> -->
+
+          <div class="bedroom-number">
+              {{ unitContent?.numberOfBedrooms }} bedrooms
+          </div>
+
+          <div class="bathroom-number">
+              {{ unitContent?.numberOfBathrooms }} bathrooms
+          </div>
+
+
+
+          <hr>
+        </div>
+</div>
+
+<!-- ABOUT THIS LISTING -->
+
+<div class="row">
+  <div class="about-this-listing col-xs-8">
+    <div id="about-listing"> About this listing </div>
+
+      <div class="about-description">
+       <p> {{ adContent?.description }} </p>
+      </div>
+
+    <hr>
+  </div>
+</div>
+
+
+<!-- THE SPACE -->
+
+<div class="row">
+  <div class="the-space col-xs-8" >
+    <div id="the-space-headline" class="col-xs-4"> The Space </div>
+
+<div >
+    <div class="space-accommodations col-xs-4" >
+        <div id="property-type">
+          Property type: {{ unitContent?.propertyType }}
+        </div>
+
+        <div id="accommodates">
+          Accommodates:  {{ unitContent?.maxSleep }}
+        </div>
+      <hr>
+    </div>
+
+    <div class="space-accommodations col-xs-4">
+        <div id="bathrooms">
+          Bathrooms:  {{ unitContent?.numberOfBathrooms }}
+        </div>
+
+        <div id="bedrooms">
+          Bedrooms:  {{ unitContent?.numberOfBedrooms }}
+        </div>
+
+        <hr>
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+
+<!-- AMENITIES -->
+
+<div class="row">
+  <div class="amenities col-xs-8">
+    <div id="amenities-headline" class="col-xs-4"> Amenities </div>
+
+      <div class="amenities-details col-xs-8">
+
+          <div id="all-amenities" class="col-xs-6" *ngFor="let feature of features">
+
+          <!-- <div *ngIf="features > 0" > -->
+          {{ feature.description }}
+          <!-- </div> -->
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- PRICES -->
+
+<div class="row">
+  <div class="prices-overview col-xs-8">
+    <div id="prices-headline" class="col-xs-4"> Prices </div>
+
+        <div class="prices-details col-xs-8">
+
+          <div id="price-per-night" class="col-xs-6">
+            ${{ prices?.nightlyWeekday.amount }}/night
+          </div>
+
+        </div>
+
+
+  </div>
+</div>
+
+
+
+  </div>
+    <!-- </div> -->
+
+
+</div>

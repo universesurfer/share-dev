@@ -18,12 +18,12 @@ export class HomeAwayService {
   lat: number;
   lng: number;
 
-  // LOCATION COORDINATES FOR EACH LISTING RETURNED FROM SEARCH
-  listingCoordinates: Array<Object> = [];
-
 
   //Stores the returned listings JSON based on search
   returnedListings: any;
+
+  //Stores returned individual listing JSON
+  listingInfo: any;
 
   constructor(
     private http: Http,
@@ -46,17 +46,32 @@ export class HomeAwayService {
 searchListings(location, newGuestValue, startDate, endDate) {
   console.log("search listing", location, newGuestValue, startDate, endDate);
   let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+  console.log("token search ", this.token);
   let options = new RequestOptions({ headers: headers });
-  return this.http.get(`https://ws.homeaway.com/public/search?q=${location}&minSleeps=${newGuestValue}&availabilityEnd=${endDate}&availabilityStart=${startDate}`, options)
+  return this.http.get(`https://ws.homeaway.com/public/search?q=${location}&minSleeps=${newGuestValue}&availabilityEnd=${endDate}&availabilityStart=${startDate}&imageSize=LARGE`, options)
     .map((res) => {
       this.returnedListings = res.json()
       return res.json();
-
     })
     // .catch((err) => {
     //   console.log(err);
     // });
+  }
 
+
+
+//Get rental listing by ID
+// https://ws.homeaway.com/public/listing?id=4133481&q=DETAILS&q=LOCATION&q=PHOTOS&q=REVIEWS&q=RATES&q=AVAILABILITY
+  getListingById(id) {
+    console.log("listing id", id);
+    console.log("token listing ", this.token);
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`https://ws.homeaway.com/public/listing?id=${id}&q=DETAILS&q=LOCATION&q=PHOTOS&q=REVIEWS&q=RATES&q=AVAILABILITY`, options)
+      .map((res) => {
+      this.listingInfo = res.json()
+      return res.json();
+    })
   }
 
 

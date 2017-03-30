@@ -1,10 +1,10 @@
-import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { FormControl } from "@angular/forms";
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HomeAwayService } from '../services/homeaway-api/home-away.service';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { Daterangepicker } from 'ng2-daterangepicker';  //date picker
 import { DaterangepickerConfig } from 'ng2-daterangepicker';
@@ -19,6 +19,7 @@ import { SebmGoogleMap, SebmGoogleMapMarker } from 'angular2-google-maps/core';
 })
 export class RentalListingsComponent implements OnInit {
 
+  // @ViewChild('listingId') = number;
 
   // bathrooms: any;
   rentalListings: any;
@@ -32,6 +33,7 @@ export class RentalListingsComponent implements OnInit {
   constructor(
 
     private mapsAPILoader: MapsAPILoader,
+    private activatedRoute: ActivatedRoute,
     private router: Router,
     private homeAwayService: HomeAwayService,
     private ngZone: NgZone,
@@ -42,37 +44,32 @@ export class RentalListingsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
-    this.userSearchLat = this.homeAwayService.lat;
-    console.log(this.userSearchLat);
-    this.userSearchLng = this.homeAwayService.lng;
-
-    this.rentalListings = this.homeAwayService.returnedListings.entries
-    console.log(this.rentalListings);
+    // get the params info from url
+    // make connection to api through service
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log('params', params);
+      this.userSearchLat = parseFloat(params.lat);
+      this.userSearchLng = parseFloat(params.lng);
+      console.log(this.userSearchLat);
+      this.homeAwayService.searchListings(params.location, params.minSleeps, params.start, params.end)
+        .subscribe((res: Response) =>  {
+          console.log(res)
+          this.rentalListings = res.entries;
+          console.log(this.rentalListings);
+      });
+    });
+    // this.userSearchLat = this.homeAwayService.lat;
+    // console.log(this.userSearchLat);
+    // this.userSearchLng = this.homeAwayService.lng;
+    //
+    // this.rentalListings = this.homeAwayService.returnedListings.entries
+    // console.log(this.rentalListings);
 
     // this.returnListingsMarkers();
 
 
-}
-
-
-
-
-    returnListingsMarkers() {
-        var placeLat;
-        var placeLng;
-        this.homeAwayService.returnedListings.forEach( listing => {
-          placeLat = listing.location.lat;
-          placeLng = listing.location.lng;
-
-        });
-
-        this.homeAwayService.listingCoordinates.push(placeLat, placeLng);
-        console.log(this.homeAwayService.listingCoordinates);
-
-    }
-
-
+  }
+  //
 
 
 

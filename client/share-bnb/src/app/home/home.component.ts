@@ -16,7 +16,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/Rx';
 
 
-// declare var moment: any;
 
 @Component({
   selector: 'app-home-component',
@@ -37,12 +36,16 @@ export class HomeComponent implements OnInit {
   userSearchLng: number;
   private markers = [];
 
+
   sleepsAmount: number;
   // returnedListings: any;
 
   //GUEST INPUT OPTIONS
   guestOptions: Array<number>;
   newGuestValue: number;
+
+  // LISTING ID
+  listingId: any;
 
   //DATE INPUT
   // public dateRange: any = {};
@@ -71,6 +74,7 @@ export class HomeComponent implements OnInit {
   // @ViewChild("returnedListings")
   public searchElementRef: ElementRef;
 
+
   constructor(
     // private router: Router,
     private mapsAPILoader: MapsAPILoader,
@@ -79,6 +83,7 @@ export class HomeComponent implements OnInit {
     private http: Http,
     private homeAwayService: HomeAwayService,
     private daterangepickerOptions: DaterangepickerConfig
+
   ) {
 
     this.daterangepickerOptions.settings = {
@@ -121,22 +126,27 @@ export class HomeComponent implements OnInit {
           console.log(place);
           console.log(this.location);
 
-          // this.userSearchLat = place.geometry.location.lat();
+
+  //SET LAT AND LNG OF USER LOCATION SEARCH
           this.homeAwayService.lat = place.geometry.location.lat();
           this.homeAwayService.lng = place.geometry.location.lng();
+          this.latitude = place.geometry.location.lat();
+          this.longitude = place.geometry.location.lng();
+          console.log("lat", this.latitude)
+          console.log("lng", this.longitude)
           // this.userSearchLng = place.geometry.location.lng();
           // console.log(this.homeAwayService.lat);
           // console.log(this.userSearchLng);
 
 
     // INITIALIZE THE MAP
-    // var map;
-    // function initMap() {
-    //   map = new google.maps.Map(document.getElementById('map'), {
-    //     center: {lat: -34.397, lng: 150.644},
-    //     zoom: 8
-    //   });
-    // }
+    var map;
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: -34.397, lng: 150.644},
+        zoom: 8
+      });
+    }
 
 
 
@@ -181,40 +191,32 @@ export class HomeComponent implements OnInit {
 
   sendGuestAmount(): void {
       console.log("Number of guests: " + this.sleepsAmount);
-      // console.log(this.location);
-  }
-
-
-//SEARCH HOMEAWAY LISTINGS
-  searchSomething() {     //return Observable?
-    this.homeAwayService.searchListings(this.location, this.newGuestValue, this.startDate, this.endDate)
-    .subscribe((res: Response) =>  {
-      this.router.navigate(['/rentals'])
-    })
-
-    console.log(this.location);
 
   }
 
 
+//SEARCH HOMEAWAY LISTINGS - Navigate to /rentals/params - can make API call directly from URL
+//                           See home-away.service.ts and rental-listings-component.ts ngOnInit() for relationship
+  searchSomething() {
+    this.router.navigate([`/rentals`],
+      { queryParams : {
+                      location: this.location,
+                      minSleeps: this.newGuestValue,
+                      start: this.startDate,
+                      end: this.endDate,
+                      lat: this.latitude,
+                      lng: this.longitude,
+                      id: this.listingId
+                    }
+      })
+    // this.homeAwayService.searchListings(this.location, this.newGuestValue, this.startDate, this.endDate)
+    // .subscribe((res: Response) =>  {
+    //   this.router.navigate(['/rentals'])
+    // })
 
-    // returnListingsMarkers() {
-    //     var placeLat;
-    //     var placeLng;
-    //     this.homeAwayService.returnedListings.forEach( listing => {
-    //       placeLat = listing.location.lat;
-    //       placeLng = listing.location.lng;
-    //
-    //     });
-    //
-    //     this.homeAwayService.listingCoordinates.push(placeLat, placeLng);
-    //     console.log(this.homeAwayService.listingCoordinates);
-    //
-    // }
+    console.log('location ', this.location);
 
-
-
-
+  }
 
 
 }
