@@ -46,6 +46,7 @@ export class SignupComponent implements OnInit {
           if (result === true) {
               // login successful
               console.log('result ok', result);
+              console.log(this.newUser);
               this.router.navigate(['/home']);
           } else {
           		console.log('result ko', result);

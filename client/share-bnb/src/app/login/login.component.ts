@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,36 +11,57 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
 
   user = {
-    firstName: '',
-    lastName: '',
     email: '',
     password: ''
   };
 
   error: string;
 
+  currentUser: any;
+
   constructor(
     private session: AuthService,
+    private userService: UserService,
     private router: Router
+    // private route: ActivatedRoute,
+    // public http: Http
   ) { }
 
   ngOnInit() {
   }
 
   login() {
-    this.session.login(this.user, (error)=>{
-      console.log("from component");
-      console.log(error);
-    })
+    this.session.login(this.user)
 		        .subscribe(result => {
 		            if (result === true) {
 	                // login successful
-	                this.router.navigate(['/home']);
+	                this.router.navigate(['/']);
+
+
+                  // this.route.params.subscribe(params => {
+                  //   this.getUserDetails(params['id']);
+                  // });
+
+
+                  // console.log(this.user); //console log the data of user who logs in
+                                          //only showing email and password b/c that's all that's entered in form
+
+
 	         			} else {
 	                // login failed
 	                this.error = 'Email or password is incorrect';
 		            }
 		        });
   }
+
+
+  // getUserDetails(id) {
+  //    this.userService.get(id)
+  //      .subscribe((user) => {
+  //        this.currentUser = user;
+  //        console.log(this.currentUser);
+  //      });
+  //  }
+
 
 }

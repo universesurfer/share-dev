@@ -20,9 +20,14 @@ router.post("/login", function(req, res) {
   //   // var lastName = req.body.lastName;
   //   // var password = req.body.password;
   // }
+let email;
+let password;
 
-var email = req.body.email;
-var password = req.body.password;
+  if(req.body.email && req.body.password){
+     email = req.body.email;
+     password = req.body.password;
+   }
+
 
   if (email === "" || password === "") {
     res.status(401).json({message:"Fill up all fields."});
@@ -41,7 +46,7 @@ var password = req.body.password;
         } else {
           var payload = {id: user._id};
           var token = jwt.sign(payload, jwtOptions.secretOrKey);
-          res.json({message: "ok", token: token});
+          res.json({message: "ok", token: token, user:user});
         }
       });
     }

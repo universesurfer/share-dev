@@ -6,6 +6,9 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { HomeAwayService } from '../services/homeaway-api/home-away.service';
 import { Router, RouterModule } from '@angular/router';
+import { UserService } from '.././services/user.service'
+import { AuthService } from '.././services/auth.service'
+
 
 import { Daterangepicker } from 'ng2-daterangepicker';  //date picker
 import { DaterangepickerConfig } from 'ng2-daterangepicker';
@@ -52,6 +55,8 @@ export class HomeComponent implements OnInit {
   startDate: any;
   endDate: any;
 
+  users: any;
+
   private selectedDate(value: any) {
 
         this.startDate = moment(value.start).format('YYYY-MM-DD');
@@ -82,7 +87,9 @@ export class HomeComponent implements OnInit {
     private ngZone: NgZone,
     private http: Http,
     private homeAwayService: HomeAwayService,
-    private daterangepickerOptions: DaterangepickerConfig
+    private daterangepickerOptions: DaterangepickerConfig,
+    private userService: UserService,
+    private authService: AuthService
 
   ) {
 
@@ -95,6 +102,16 @@ export class HomeComponent implements OnInit {
     }
 
   ngOnInit() {
+
+    // console.log(this.authService.currentUser);
+
+
+    //TESTING FUNCTIONS.  GETTING USER LIST
+    this.userService.getList()
+    .subscribe((users) => {
+      this.users = users;
+      console.log(users);
+    });
 
     //Setting array values of guest input
     this.guestOptions = [1 ,2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,11 ,12];

@@ -12,19 +12,19 @@ var rp = require('request-promise');
 // });
 
 
-var options = {
-    uri: "https://ws.homeaway.com/public/search?q=",
-    qs: {
-        access_token: 'NmU3ODBmYjgtOGExNS00ZDc1LWIzODYtOGUzMjY3N2JjY2Zi' // -> uri + '?access_token=xxxxx%20xxxxx'
-    },
-    headers: req.body.headers,
-    json: true // Automatically parses the JSON string in the response
-};
-
-rp(options)
-    .then(function (repos) {
-        console.log('User has %d repos', repos.length);
-    })
-    .catch(function (err) {
-        // API call failed...
-    });
+// var options = {
+//     uri: "https://ws.homeaway.com/public/search?q=",
+//     qs: {
+//         access_token: 'NmU3ODBmYjgtOGExNS00ZDc1LWIzODYtOGUzMjY3N2JjY2Zi' // -> uri + '?access_token=xxxxx%20xxxxx'
+//     },
+//     headers: req.body.headers,
+//     json: true // Automatically parses the JSON string in the response
+// };
+//
+// rp(options)
+//     .then(function (repos) {
+//         console.log('User has %d repos', repos.length);
+//     })
+//     .catch(function (err) {
+//         // API call failed...
+//     });
