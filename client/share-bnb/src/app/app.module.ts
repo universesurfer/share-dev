@@ -25,7 +25,10 @@ import { CardListingComponent } from './card-listing/card-listing.component';
 import { CarouselModule } from 'ng2-bootstrap';
 import { ListingDetailsComponent } from './listing-details/listing-details.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { ProfileComponent } from './profile/profile.component'
+import { ProfileComponent } from './profile/profile.component';
+import { UserReviewsComponent } from './user-reviews/user-reviews.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { ListingReviewsComponent } from './listing-reviews/listing-reviews.component';
 
 
 
@@ -41,7 +44,10 @@ import { ProfileComponent } from './profile/profile.component'
     CardListingComponent,
     ListingDetailsComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserReviewsComponent,
+    FavoritesComponent,
+    ListingReviewsComponent
   ],
   imports: [
     AgmCoreModule.forRoot({

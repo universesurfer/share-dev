@@ -1,8 +1,43 @@
-<p>
-  profile works!
-</p>
+<div class="container">
+  <div class="row profile-container">
+
+    <!-- LEFT SIDEBAR - PICTURE -->
+    <div class="profile-left-sidebar">
+      <div class="profile-picture">
+        <img src="../public/img/IMG_0428 2.jpg" alt="">
+
+      </div>
+    </div>
 
 
-<h3> {{ currentUser?.firstName }} </h3>
+    <!-- MAIN PROFILE CONTENT -->
 
-<!-- <h3> {{ currentUser.email }} </h3> -->
+    <div class="main-profile-content">
+      <div id="hello-user">
+          <h1>Hey, I'm {{ currentUser?.firstName }}! </h1> <br>
+      </div>
+      <div class="user-location-join-date">
+        <h4>Los Angeles, California, United States · Joined in October 2015 (this is a placeholder)</h4>
+      </div>
+
+      <div class="user-description">
+          <p>Hi, I'm Nick! I'm a photographer, who also enjoys writing, time in nature, good company, music, traveling, meditation, and a strong cup of coffee.</p>
+      </div>
+
+    <!-- FAVORITES -->
+      <div class="favorite-container">
+        <app-favorites></app-favorites>
+      </div>
+
+      <!-- REVIEWS OF USER-->
+      <div class="reviews-of-user">
+        <app-user-reviews></app-user-reviews>
+
+
+      </div>
+
+
+
+
+
+</div>

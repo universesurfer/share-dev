@@ -109,6 +109,7 @@ export class AuthService implements CanActivate {
       this.token = null;
       this.isAuth.emit(false);
       localStorage.removeItem('token');
+      localStorage.removeItem('user');
       this.router.navigate(['/login']);
   }
 

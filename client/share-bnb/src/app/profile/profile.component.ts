@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '.././services/auth.service';
-import { UserService } from '.././services/user.service'
+import { UserService } from '.././services/user.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+// import { UserReviewsComponent } from '../user-reviews/user-reviews.component';
 
 
 @Component({

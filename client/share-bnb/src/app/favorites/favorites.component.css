@@ -1,0 +1,31 @@
+
+        /*FAVORITES*/
+
+.favorite-homes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.fav-house-1 {
+  height: 270px;
+  width: 270px;
+  background-color: olive;
+  margin-right: 20px;
+  margin-top: 15px
+}
+
+.fav-house-2 {
+  height: 270px;
+  width: 270px;
+  background-color: olive;
+  margin-right: 20px;
+  margin-top: 15px;
+}
+
+.fav-house-3 {
+  height: 270px;
+  width: 270px;
+  background-color: olive;
+  margin-top: 15px;
+}

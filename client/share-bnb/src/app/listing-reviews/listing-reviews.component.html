@@ -1,0 +1,25 @@
+<p>
+  listing-reviews works!
+</p>
+
+<div class="container-fluid">
+  <div class="row">
+
+<div class="col-xs-2"></div>
+  <div class="col-xs-8">
+
+    <div class="review-wrapper" [ngClass]="{show: show}">
+      <div class="listing-reviews-container" *ngFor="let review of reviewEntries.entries">
+        <div class="listing-review-box">
+          <p>{{ review.headline }}</p>
+        </div>
+      <hr>
+      </div>
+    </div>
+    <button (click)="show = true">Show More</button>
+  </div>
+
+<div class="col-xs-2"></div>
+
+  </div>
+</div>

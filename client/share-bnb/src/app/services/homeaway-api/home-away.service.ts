@@ -25,6 +25,9 @@ export class HomeAwayService {
   //Stores returned individual listing JSON
   listingInfo: any;
 
+  //Listing reviews
+  listingReviews: any;
+
   constructor(
     private http: Http,
     private router: Router) {
@@ -72,6 +75,20 @@ searchListings(location, newGuestValue, startDate, endDate) {
       this.listingInfo = res.json()
       return res.json();
     })
+  }
+
+  //Get rental reviews
+
+  getListingReviews(listingId, unitId) {
+    console.log("listing id", listingId, 'unitId', unitId);
+    console.log("token listing ", this.token);
+    let headers = new Headers({ 'Authorization': 'Bearer ' + this.token });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`https://ws.homeaway.com/public/listingReviews?listingId=${listingId}&unitId=${unitId}`, options)
+      .map((res) => {
+      this.listingReviews = res.json()
+      return res.json();
+      })
   }
 
 

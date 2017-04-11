@@ -35,9 +35,14 @@ export class SingleRentalComponent implements OnInit {
   features: any;
   prices: any;
 
+  listingId: any;
+  unitId: number;
+
   unitContent: any;
 
   mainImage: string;
+
+  reviewEntries: any = {};
 
   constructor(
 
@@ -52,13 +57,18 @@ export class SingleRentalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
+    // console.log("hi", this.homeAwayService.listingInfo);
+    // let unitId;
+    // console.log(unitInfo.units[0].unitNumber);
+
     // takes the param id of the individual listing
     // calls to HomeAway API with that param id
     // prints the information on the page
 
     this.activatedRoute.queryParams.subscribe(params => {
       console.log('params', params);
-      this.homeAwayService.getListingById(params.id)
+      this.homeAwayService.getListingById(params.listingId)
         .subscribe((res: Response) =>  {
           this.ngZone.run(()=>{
             this.rentalDetails = res;
@@ -67,7 +77,12 @@ export class SingleRentalComponent implements OnInit {
             this.unitContent = res.units[0].unitContent;
             this.features = res.units[0].unitContent.features;
             this.prices = res.units[0].ratePeriods[0].rates;
+            // this.listingId = res.listingId;
+            this.unitId = res.units[0].unitNumber;
+            console.log("UNIT ID", this.unitId);
+
             console.log(this.features);
+            // console.log('unit id', this.unitId)
 
             console.log(this.rentalLocation);
             this.mainImage = res.photos.thumbnails;
@@ -75,11 +90,28 @@ export class SingleRentalComponent implements OnInit {
             console.log(this.rentalDetails);
           })
 
+          this.homeAwayService.getListingReviews(params.listingId, this.unitId)
+          .subscribe((res: Response) => {
+            this.ngZone.run(() => {
+              // console.log('reviews', res);
+              this.reviewEntries = res;
+              console.log(this.reviewEntries);
+
+
+              })
+            });
           // this.rentalListingId = res.entries.;
           // console.log(this.rentalListings);
 
       });
     });
+
+
+    // this.activatedRoute.queryParams.subscribe(params => {
+
+    // });
+
   }
+
 
 }

@@ -1,0 +1,45 @@
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+/*PROFILE - LEFT SIDEBAR*/
+.profile-left-sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-picture {
+  height: 290px;
+  width: 280px;
+  background-color: blue;
+}
+
+.profile-picture img {
+  height: 100%;
+  width: 100%;
+}
+
+
+/*PROFILE - RIGHT SIDE/MAIN CONTENT*/
+
+.main-profile-content {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  margin-left: 30px;
+}
+
+.user-description {
+  margin-top: 100px;
+}
+
+
+        /*FAVORITES*/
+
+.favorite-homes {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

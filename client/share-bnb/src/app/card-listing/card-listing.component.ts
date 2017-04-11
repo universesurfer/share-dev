@@ -10,6 +10,8 @@ import { Router, RouterModule } from '@angular/router';
 export class CardListingComponent implements OnInit {
 
   @Input() listing: any;
+  unitId: any;
+
 
   rentalId: any;
   // likes = 0;
@@ -18,10 +20,14 @@ export class CardListingComponent implements OnInit {
     private router: Router,
     private homeAwayService: HomeAwayService
 
-  ) { }
+  ) {
+
+  }
 
   ngOnInit() {
     console.log("listing", this.listing);
+    console.log('listing info', this.homeAwayService.listingInfo);
+
   }
 
   // likeIt() {
@@ -32,7 +38,8 @@ export class CardListingComponent implements OnInit {
   seeListing() {
       this.router.navigate([`/listing`],
         { queryParams : {
-            id: this.listing.listingId,
+            listingId: this.listing.listingId,
+            // unitId: this.unitId
             }
         });
   }

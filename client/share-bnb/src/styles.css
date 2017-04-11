@@ -4,6 +4,11 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+hr {
+  height: 1px;
+  color: black;
+}
+
 /*NAVBAR*/
 
 .navbar {
@@ -306,10 +311,8 @@ body {
     height: 100%;
 }
 
-/*.map-canvas {
-  height: 100%;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
+/*Make an image circular*/
 
-}*/
+.img-circle {
+   border-radius: 50%;
+}
